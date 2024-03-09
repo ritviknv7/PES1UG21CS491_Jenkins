@@ -5,32 +5,30 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Compile the .cpp file using a shell script
-                    build 'PES1UG21CS491-1'
-                    sh 'g++ main.cpp -o output'
+                    // Intentional error: invalid command
+                    sh 'invalid_command'
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    // Print output of the compiled .cpp file using a shell script
-                    sh './output'
+                    // Compile the .cpp file using a shell script
+                    sh 'echo "Testing..."'
                 }
             }
         }
         stage('Deploy') {
             steps {
                 // Add deployment steps here
-                echo 'deploy'
             }
         }
     }
     
     post {
-        failure {
+        always {
             // Display 'pipeline failed' in case of any errors within the pipeline
-            error 'Pipeline failed'
+            echo 'Pipeline failed'
         }
     }
 }
