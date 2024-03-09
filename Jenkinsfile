@@ -6,8 +6,7 @@ pipeline {
             steps {
                 script {
                     // Compile the .cpp file using a shell script
-                    
-                    sh 'g++ main.cpp -o output'
+                    sh 'g++ -o output main.cpp'
                 }
             }
         }
@@ -22,6 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Add deployment steps here
+                echo 'deploy'
             }
         }
     }
