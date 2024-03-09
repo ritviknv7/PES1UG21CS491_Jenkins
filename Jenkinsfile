@@ -6,8 +6,8 @@ pipeline {
             steps {
                 script {
                     // Compile the .cpp file using a shell script
-                   
-                    sh 'g++ -o output hello.cpp'
+                    
+                    sh 'g++ main.cpp -o output'
                 }
             }
         }
@@ -27,9 +27,9 @@ pipeline {
     }
     
     post {
-        always {
+        failure {
             // Display 'pipeline failed' in case of any errors within the pipeline
-            echo 'Pipeline failed'
+            error 'Pipeline failed'
         }
     }
 }
